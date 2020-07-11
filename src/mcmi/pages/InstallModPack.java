@@ -1,4 +1,4 @@
-package mmh.pages;
+package mcmi.pages;
 
 import java.awt.Color;
 import java.awt.Desktop;
@@ -10,8 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import mmh.Main;
-import mmh.Screen;
+import mcmi.Main;
+import mcmi.Screen;
 
 public class InstallModPack extends JPanel {
 	private static final long serialVersionUID = 7924515181475352425L;

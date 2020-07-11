@@ -1,4 +1,4 @@
-package mmh.config;
+package mcmi.config;
 
 import org.json.JSONObject;
 

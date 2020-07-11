@@ -1,6 +1,6 @@
-package mmh.auto;
+package mcmi.auto;
 
-import mmh.Main;
+import mcmi.Main;
 
 import java.io.IOException;
 

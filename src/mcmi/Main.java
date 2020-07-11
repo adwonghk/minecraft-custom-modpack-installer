@@ -1,10 +1,10 @@
-package mmh;
+package mcmi;
 
 import java.awt.Font;
 
 import javax.swing.JFrame;
 
-import mmh.config.ConfigLoader;
+import mcmi.config.ConfigLoader;
 
 public class Main {
 	

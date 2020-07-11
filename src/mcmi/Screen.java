@@ -1,4 +1,4 @@
-package mmh;
+package mcmi;
 
 import java.util.ArrayList;
 
@@ -8,9 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.Timer;
 
-import mmh.auto.AutoUpdater;
-import mmh.config.ConfigLoader;
-import mmh.pages.*;
+import mcmi.auto.AutoUpdater;
+import mcmi.config.ConfigLoader;
+import mcmi.pages.*;
 
 public class Screen extends JPanel {
 	private static final long serialVersionUID = -2486623228027275624L;

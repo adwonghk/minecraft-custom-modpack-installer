@@ -1,4 +1,4 @@
-package mmh.pages;
+package mcmi.pages;
 
 import java.awt.Color;
 import java.io.File;
@@ -12,10 +12,10 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
-import mmh.Main;
-import mmh.Screen;
-import mmh.auto.AutoDownloader;
-import mmh.auto.AutoUnzipper;
+import mcmi.Main;
+import mcmi.Screen;
+import mcmi.auto.AutoDownloader;
+import mcmi.auto.AutoUnzipper;
 
 public class AutoDownloadInstall extends JPanel {
 	private static final long serialVersionUID = -8324611571879837373L;

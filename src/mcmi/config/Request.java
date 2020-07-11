@@ -1,4 +1,4 @@
-package mmh.config;
+package mcmi.config;
 
 import java.io.IOException;
 import java.io.InputStream;

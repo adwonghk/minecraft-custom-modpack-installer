@@ -1,4 +1,4 @@
-package mmh.auto;
+package mcmi.auto;
 
 import java.io.File;
 import java.io.FileInputStream;

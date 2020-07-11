@@ -1,4 +1,4 @@
-package mmh.auto;
+package mcmi.auto;
 
 import java.io.FileOutputStream;
 import java.net.URL;
@@ -7,7 +7,7 @@ import java.nio.channels.ReadableByteChannel;
 
 import javax.swing.JOptionPane;
 
-import mmh.Main;
+import mcmi.Main;
 
 public class AutoDownloader implements Runnable {
 	

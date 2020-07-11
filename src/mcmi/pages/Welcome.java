@@ -1,12 +1,12 @@
-package mmh.pages;
+package mcmi.pages;
 
 import java.awt.Color;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import mmh.Main;
-import mmh.Screen;
+import mcmi.Main;
+import mcmi.Screen;
 
 public class Welcome extends JPanel {
 	private static final long serialVersionUID = 7994513795896060482L;

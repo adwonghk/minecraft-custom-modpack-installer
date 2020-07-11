@@ -1,4 +1,4 @@
-package mmh.pages;
+package mcmi.pages;
 
 import java.awt.Color;
 import java.awt.Desktop;
@@ -11,37 +11,36 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import mmh.Main;
-import mmh.Screen;
+import mcmi.Main;
+import mcmi.Screen;
 
-public class DownloadServer extends JPanel {
-	private static final long serialVersionUID = 2100186923123627455L;
+public class DownloadModPack extends JPanel {
+	private static final long serialVersionUID = 2989513334065503873L;
 	
 	private JLabel tip;
 	private JButton link;
-	private JLabel tip2;
 
-	public DownloadServer(String serverLink) {
+	public DownloadModPack(String modpackLink) {
 		this.setBackground(Color.CYAN);
 		this.setSize(Screen.PAGE_WIDTH, Screen.PAGE_HEIGHT);
 		this.setLayout(null);
-		tip = new JLabel("如有需要先下載");
+		tip = new JLabel("到以下網址下載由Ad精心準備的mods <3");
 		tip.setFont(Main.font);
-		tip.setBounds(10, 0, 400, 40);
+		tip.setBounds(10, 0, 300, 40);
 
 		link = new JButton();
-		link.setText("<HTML><FONT color=\"#000099\"><U>server</U></FONT></HTML>");
+		link.setText("<HTML><FONT color=\"#000099\"><U>modpack</U></FONT></HTML>");
 		link.setBounds(10, 40, 350, 20);
 		link.setHorizontalAlignment(SwingConstants.LEFT);
 		link.setBorderPainted(false);
 		link.setOpaque(false);
 		link.setBackground(Color.WHITE);
-		link.setToolTipText(serverLink);
+		link.setToolTipText(modpackLink);
 		link.addActionListener(e -> {
 			if (Desktop.isDesktopSupported()) {
 				try {
 					try {
-						Desktop.getDesktop().browse(new URI(serverLink));
+						Desktop.getDesktop().browse(new URI(modpackLink));
 					} catch (URISyntaxException e1) {
 						e1.printStackTrace();
 					}
@@ -52,14 +51,9 @@ public class DownloadServer extends JPanel {
 
 			}
 		});
-		
-		tip2 = new JLabel("下載後解壓縮，點擊start.bat開Server");
-		tip2.setFont(Main.font);
-		tip2.setBounds(10, 60, 400, 40);
 
 		add(tip);
 		add(link);
-		add(tip2);
 	}
 
 }

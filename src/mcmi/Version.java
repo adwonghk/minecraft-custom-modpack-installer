@@ -1,4 +1,4 @@
-package mmh;
+package mcmi;
 
 public class Version implements Comparable<Version> {
 
