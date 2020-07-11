@@ -5,14 +5,10 @@ A software that I built for my friends who want to join my minecraft modded serv
 ### How to use MCMI
 
 When starting the program, it will automatically fetch data from a destinated URL.
-```
 <img src="https://i.imgur.com/WvBUs2v.gifv" title="program start" alt="program start">
-```
 
 After fetching successfully, user can install the modpack easily.
-```
 <img src="https://i.imgur.com/AVRrr1P.png" title="install" alt="install">
-```
 
 ## Getting Started
 
