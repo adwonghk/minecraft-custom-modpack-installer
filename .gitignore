@@ -1,0 +1,24 @@
+#eclipse
+**/bin
+**/.settings
+**/.classpath
+*.project
+
+#In case people make their workspace in the repo
+/eclipse/
+
+#idea
+/META-INF
+/out
+/.idea
+/classes
+*.iml
+
+#gradle
+/build
+/.gradle
+/mdk/.gradle
+/mdk/build
+
+gradle.properties
+!/mdk/gradle.properties
