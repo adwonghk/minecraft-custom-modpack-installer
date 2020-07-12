@@ -27,7 +27,7 @@ public class Finish extends JPanel {
 		finish.setBounds(10, 0, 400, 40);
 		add(finish);
 		
-		hint = new JLabel("感謝使用本軟件，如有任何問題，請連繫Ad (adwonghk@gmail.com)");
+		hint = new JLabel("感謝使用本軟件，如有任何問題，請聯繫Ad (adwonghk@gmail.com)");
 		hint.setFont(Constant.body);
 		hint.setForeground(Constant.textColor);
 		hint.setBounds(10, 30, 400, 40);

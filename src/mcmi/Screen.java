@@ -118,7 +118,7 @@ public class Screen extends JPanel {
 			repaint();
 		});
 		
-		lbCheckUpdate = new JLabel("Checking update...");
+		lbCheckUpdate = new JLabel("正在檢查更新...");
 		lbCheckUpdate.setFont(Constant.body);
 		lbCheckUpdate.setForeground(Constant.textColor);
 		lbCheckUpdate.setBounds(10, 240, 400, 20);
@@ -126,7 +126,7 @@ public class Screen extends JPanel {
 		
 		timer = new Timer(100, e -> {
 			loadingText = loadingText.equals("...") ? ".." : loadingText.equals("..") ? "." : "...";
-			lbCheckUpdate.setText("Fetching data " + loadingText);
+			lbCheckUpdate.setText("正在獲取線上資料 " + loadingText);
 			checkUpdate(config);
 
 			repaint();
@@ -169,9 +169,9 @@ public class Screen extends JPanel {
 			if (Main.version.compareTo(new Version(config.parser.version)) >= 0) {
 				// current version is the newest
 				System.out.println("[Info] - current version is the newest");
-				versionHint = "Current version is the newest!";
+				versionHint = "本軟件已經是最新版!";
 				
-		    	lbCheckUpdate.setText("Fetched successfully! " + versionHint);
+		    	lbCheckUpdate.setText("獲取資料成功! " + versionHint);
 
 		    	btnNext.setEnabled(true);
 		    	
@@ -180,9 +180,9 @@ public class Screen extends JPanel {
 			} else if (Main.version.compareTo(new Version(config.parser.version)) == -1) {
 				// current version needs an update
 				System.out.println("[Info] - current version needs an update");
-				versionHint = "Current version needs an update! Please wait...";
+				versionHint = "本軟件並不是最新版本...正在等候更新...";
 				
-		    	lbCheckUpdate.setText("Fetched successfully! " + versionHint);
+		    	lbCheckUpdate.setText("獲取資料成功! " + versionHint);
 		    	autoUpdater = new AutoUpdater(config.parser.update_link);
 		    	autoUpdater.startUpdate();
 		    	timer.stop();

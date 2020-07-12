@@ -90,6 +90,7 @@ public class Welcome extends JPanel {
 			// disable the "All files" option.
 			//
 			chooser.setAcceptAllFileFilterUsed(false);
+			chooser.setFileHidingEnabled(false);
 			//
 			if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
 				System.out.println("[Info] - getCurrentDirectory(): " + chooser.getCurrentDirectory());
