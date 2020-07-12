@@ -2,7 +2,7 @@
 
 A software that I built for my friends who want to join my minecraft modded server.
 
-## How to use MCMI
+## How to use MCMI or mcModHelper
 
 When starting the program, it will automatically fetch data from a destinated URL.<br>
 <img src="https://i.imgur.com/nbpAUMO.png" title="program start" alt="program start"><br>
