@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import components.ModernStyleUI;
+import mcmi.Constant;
 import mcmi.Main;
 import mcmi.Screen;
 
@@ -21,16 +23,19 @@ public class InstallModPack extends JPanel {
 	private JLabel tip2;
 
 	public InstallModPack() {
-		this.setBackground(Color.CYAN);
+		this.setBackground(Constant.secondaryColor);
 		this.setSize(Screen.PAGE_WIDTH, Screen.PAGE_HEIGHT);
 		this.setLayout(null);
 		tip = new JLabel("打開你minecraft所安裝的位置");
-		tip.setFont(Main.font);
+		tip.setFont(Constant.body);
+		tip.setForeground(Constant.textColor);
 		tip.setBounds(10, 0, 300, 40);
 
 		link = new JButton();
-		link.setText("<HTML><FONT color=\"#000099\"><U>.minecraft (windows預設為%appdata%\\.minecraft)<br>(mac預設為~/Library/Application Support/minecraft)</U></FONT></HTML>");
+		link.setText("<HTML><U>.minecraft (windows預設為%appdata%\\.minecraft)<br>(mac預設為~/Library/Application Support/minecraft)</U></FONT></HTML>");
 		link.setBounds(10, 40, 450, 40);
+		link.setUI(new ModernStyleUI());
+		link.setForeground(Constant.linkColor);
 		link.setHorizontalAlignment(SwingConstants.LEFT);
 		link.setBorderPainted(false);
 		link.setOpaque(false);
@@ -54,7 +59,8 @@ public class InstallModPack extends JPanel {
 		});
 		
 		tip2 = new JLabel("把下載好的mods.zip解壓縮並放在mods資料夾");
-		tip2.setFont(Main.font);
+		tip2.setFont(Constant.body);
+		tip2.setForeground(Constant.textColor);
 		tip2.setBounds(10, 75, 400, 40);
 
 		add(tip);

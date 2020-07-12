@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import components.ModernStyleUI;
+import mcmi.Constant;
 import mcmi.Main;
 import mcmi.Screen;
 
@@ -21,16 +23,19 @@ public class DownloadModPack extends JPanel {
 	private JButton link;
 
 	public DownloadModPack(String modpackLink) {
-		this.setBackground(Color.CYAN);
+		this.setBackground(Constant.secondaryColor);
 		this.setSize(Screen.PAGE_WIDTH, Screen.PAGE_HEIGHT);
 		this.setLayout(null);
 		tip = new JLabel("到以下網址下載由Ad精心準備的mods <3");
-		tip.setFont(Main.font);
+		tip.setFont(Constant.body);
+		tip.setForeground(Constant.textColor);
 		tip.setBounds(10, 0, 300, 40);
 
 		link = new JButton();
-		link.setText("<HTML><FONT color=\"#000099\"><U>modpack</U></FONT></HTML>");
+		link.setText("<HTML><U>modpack</U></FONT></HTML>");
 		link.setBounds(10, 40, 350, 20);
+		link.setUI(new ModernStyleUI());
+		link.setForeground(Constant.linkColor);
 		link.setHorizontalAlignment(SwingConstants.LEFT);
 		link.setBorderPainted(false);
 		link.setOpaque(false);

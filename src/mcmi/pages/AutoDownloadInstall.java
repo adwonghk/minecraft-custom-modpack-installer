@@ -1,6 +1,7 @@
 package mcmi.pages;
 
 import java.awt.Color;
+import java.awt.event.MouseMotionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -12,6 +13,10 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
+import com.sun.org.apache.bcel.internal.Const;
+import components.ModernStyleUI;
+import components.RoundedBorder;
+import mcmi.Constant;
 import mcmi.Main;
 import mcmi.Screen;
 import mcmi.auto.AutoDownloader;
@@ -33,14 +38,15 @@ public class AutoDownloadInstall extends JPanel {
 	private states currentState = states.onReady;
 	
 	public AutoDownloadInstall(Screen screen, String modpackURL) {
-		this.setBackground(Color.CYAN);
+		this.setBackground(Constant.secondaryColor);
 		this.setSize(Screen.PAGE_WIDTH, Screen.PAGE_HEIGHT);
 		this.setLayout(null);
 		
 		downloader = new AutoDownloader(modpackURL, false);
 		
 		hint = new JLabel("一鍵全自動下載mod pack並安裝 (請先安裝Forge!!!)");
-		hint.setFont(Main.font);
+		hint.setFont(Constant.body);
+		hint.setForeground(Constant.textColor);
 		hint.setBounds(10, 0, 400, 40);
 		add(hint);
 		
@@ -48,6 +54,12 @@ public class AutoDownloadInstall extends JPanel {
 		btn.setText("按我按我 <3");
 		btn.setBounds(10, 40, 100, 20);
 		btn.setHorizontalAlignment(SwingConstants.CENTER);
+		btn.setBorder(new RoundedBorder(5, Constant.btnBorderColor, 1));
+		btn.setBackground(Constant.secondaryColor);
+		btn.setFont(Constant.body);
+		btn.setUI(new ModernStyleUI());
+		btn.setFocusPainted(false);
+		btn.setForeground(Constant.textColor);
 		btn.addActionListener(e -> {
 			btn.setEnabled(false);
 			screen.setEnableAllBtns(false);
@@ -57,9 +69,14 @@ public class AutoDownloadInstall extends JPanel {
 		
 		console = new JTextArea();
 		console.setEditable(false);
-		console.setFont(Main.font);
+		console.setFont(Constant.body);
+		console.setBackground(Constant.mainColor);
+		console.setForeground(Constant.textColor);
+
 		console.setBounds(10, 70, 400, 40);
 		JScrollPane jScrollPane = new JScrollPane(console);
+		jScrollPane.setBackground(Constant.mainColor);
+		jScrollPane.setForeground(Constant.textColor);
 		jScrollPane.setBounds(10, 70, 400, 110);
 		add(jScrollPane);
 		
@@ -75,17 +92,16 @@ public class AutoDownloadInstall extends JPanel {
 			} else if (currentState == states.unzipMods) {
 				unzipMods();
 			} else if (currentState == states.removeModsZip) {
-				System.out.println("[Info] - Start to remove mods.zip");
+				System.out.println("[Info] - Start to remove mods.zip\n");
 				File file = new File(Main.defualtMCLocation +  (Main.isWindows() ? "\\" : "/") + "mods.zip");
 				if (file.delete()) {
 					System.out.println("[Info] - Removed mods.zip");
 					messages.append("Deleted mods.zip!\n");
-					currentState = states.onFinish;
 				} else {
 					System.out.println("[Info] - Failed at removing mods.zip");
 					messages.append("Failed at deleting mods.zip! Please ask Ad to solve this problem...\n");
-					currentState = states.onFinish;
 				}
+				currentState = states.onFinish;
 			} else if (currentState == states.onFinish) {
 				timer.stop();
 				screen.setEnableAllBtns(true);
@@ -112,7 +128,7 @@ public class AutoDownloadInstall extends JPanel {
 
 	private void removeOldMods() {
 		System.out.println("----------");
-		messages.append("Start to delete old mods...");
+		messages.append("Start to delete old mods...\n");
 		System.out.println("[Info] - Start to removing old mods");
 		
 		File modsFolder = new File(Main.defualtMCLocation +  (Main.isWindows() ? "\\" : "/") +"mods");

@@ -1,20 +1,20 @@
 package mcmi;
 
-import java.awt.Font;
+import java.awt.*;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import mcmi.config.ConfigLoader;
 
 public class Main {
-	
-	public static final Font font = new Font(Font.DIALOG, Font.PLAIN, 15);
-	public static final Version version = new Version("1.2");
+
+	public static final Version version = new Version("1.3");
 	// "/Users/" + System.getProperty("user.name") + "/Library/Application Support/minecraft";
 	public static String defualtMCLocation = "C:\\Users\\" + System.getProperty("user.name") + "\\AppData\\Roaming\\.minecraft";
 	
 	public Main() {
 		JFrame frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/logo.png")));
 		frame.setSize(450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);

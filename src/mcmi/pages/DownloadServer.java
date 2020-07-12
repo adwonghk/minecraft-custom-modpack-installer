@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import components.ModernStyleUI;
+import mcmi.Constant;
 import mcmi.Main;
 import mcmi.Screen;
 
@@ -22,16 +24,19 @@ public class DownloadServer extends JPanel {
 	private JLabel tip2;
 
 	public DownloadServer(String serverLink) {
-		this.setBackground(Color.CYAN);
+		this.setBackground(Constant.secondaryColor);
 		this.setSize(Screen.PAGE_WIDTH, Screen.PAGE_HEIGHT);
 		this.setLayout(null);
 		tip = new JLabel("如有需要先下載");
-		tip.setFont(Main.font);
+		tip.setFont(Constant.body);
+		tip.setForeground(Constant.textColor);
 		tip.setBounds(10, 0, 400, 40);
 
 		link = new JButton();
-		link.setText("<HTML><FONT color=\"#000099\"><U>server</U></FONT></HTML>");
+		link.setText("<HTML><U>server</U></FONT></HTML>");
 		link.setBounds(10, 40, 350, 20);
+		link.setUI(new ModernStyleUI());
+		link.setForeground(Constant.linkColor);
 		link.setHorizontalAlignment(SwingConstants.LEFT);
 		link.setBorderPainted(false);
 		link.setOpaque(false);
@@ -54,7 +59,8 @@ public class DownloadServer extends JPanel {
 		});
 		
 		tip2 = new JLabel("下載後解壓縮，點擊start.bat開Server");
-		tip2.setFont(Main.font);
+		tip2.setFont(Constant.body);
+		tip2.setForeground(Constant.textColor);
 		tip2.setBounds(10, 60, 400, 40);
 
 		add(tip);
