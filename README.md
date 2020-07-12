@@ -5,10 +5,8 @@ A software that I built for my friends who want to join my minecraft modded serv
 ## How to use MCMI
 
 When starting the program, it will automatically fetch data from a destinated URL.<br>
-<img src="https://i.imgur.com/WvBUs2v.gif" title="program start" alt="program start">
-
+<img src="https://i.imgur.com/nbpAUMO.png" title="program start" alt="program start">
 After fetching successfully, user can install the modpack easily.<br>
-<img src="https://i.imgur.com/AVRrr1P.png" title="install" alt="install">
 
 ## Getting Started
 
@@ -26,11 +24,9 @@ Java 1.8 or above
 
 A step by step series of examples that tell you how to get a development env running
 
-```
 I used [JSON-java](https://github.com/stleary/JSON-java) (20200518) as an external library to parse json.
 
-So don't forget to add this in your IDE.
-```
+So don't forget to include this library when you compile the project.
 
 ## Versioning
 
