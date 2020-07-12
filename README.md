@@ -24,7 +24,7 @@ Java 1.8 or above
 
 A step by step series of examples that tell you how to get a development env running
 
-I used [JSON-java](https://github.com/stleary/JSON-java) (20200518) as an external library to parse json.
+I use [JSON-java](https://github.com/stleary/JSON-java) (20200518) as an external library to parse json.
 
 So don't forget to include this library when you compile the project.
 
