@@ -2,7 +2,9 @@ package mcmi.auto;
 
 import mcmi.Main;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import javax.swing.*;
 
@@ -29,10 +31,10 @@ public class AutoUpdater implements Runnable {
 				timer.stop();
 				// start the new version
 				try {
-					System.out.println("[Auto Updater] - Exexcuting the newer version: " + "java -jar " + System.getProperty("user.dir") +  (Main.isWindows() ? "\\" : "/") + "mcModHelper.jar");
+					System.out.println("[Auto Updater] - Exexcuting the newer version: " + "java -jar " + new File(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getPath() +  (Main.isWindows() ? "\\" : "/") + "mcModHelper.jar");
 					Runtime.getRuntime().exec("java -jar " + System.getProperty("user.dir") +  (Main.isWindows() ? "\\" : "/") + "mcModHelper.jar");
-				} catch (IOException e1) {
-					JOptionPane.showMessageDialog(null, "Please restart this program!\n Error: " + e);
+				} catch (IOException | URISyntaxException e1) {
+					JOptionPane.showMessageDialog(null, "請重啟本程式，如仍有問題請聯繫Ad!\n Error: " + e);
 					e1.printStackTrace();
 				}
 				

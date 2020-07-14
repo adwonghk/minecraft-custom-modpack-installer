@@ -49,7 +49,7 @@ public class Welcome extends JPanel {
 		welcome2.setBounds(10, 30, 400, 40);
 		add(welcome2);
 
-		rbChoice1 = new JRadioButton("自行安裝Forge + 自動安裝modpack");
+		rbChoice1 = new JRadioButton("自行安裝Forge + 自動安裝modpack(建議使用)");
 		rbChoice1.setFont(Constant.body);
 		rbChoice1.setForeground(Constant.textColor);
 		rbChoice1.setBackground(Constant.secondaryColor);

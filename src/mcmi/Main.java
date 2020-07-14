@@ -1,6 +1,8 @@
 package mcmi;
 
 import java.awt.*;
+import java.io.File;
+import java.net.URISyntaxException;
 
 import javax.swing.*;
 
@@ -30,7 +32,14 @@ public class Main {
 		if (!isWindows()) {
 			defualtMCLocation = "/Users/" + System.getProperty("user.name") + "/Library/Application Support/minecraft";
 		}
+		// user.dir don't really mean current path that executes this java program
 		System.out.println("Working Directory = " + System.getProperty("user.dir"));
+
+		try {
+			System.out.println("current Path: " + new File(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getPath());
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
 		
 		new Main();
 	}
