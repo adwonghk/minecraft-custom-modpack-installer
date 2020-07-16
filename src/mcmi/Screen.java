@@ -92,6 +92,8 @@ public class Screen extends JPanel {
 					System.out.println("[Info] - User choose option 2 - custom download and install");
 					addCustomPages(config);
 				}
+			} else if (stageIndex == stages.size() - 1) {
+				btnNext.setText("結束啦你");
 			}
 
 
