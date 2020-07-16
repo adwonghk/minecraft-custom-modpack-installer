@@ -35,6 +35,7 @@ I use [SemVer](http://semver.org/) for versioning. There is also a built-in vers
 ## Authors
 
 * **Adrian Wong** - *Initial work* - [adwonghk](https://github.com/adwonghk)
+* **Perry Lo** - *Debugger* - [PerryCodekies](https://github.com/PerryCodekies)
 
 ## License
 
