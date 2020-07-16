@@ -93,15 +93,15 @@ public class Screen extends JPanel {
 					addCustomPages(config);
 				}
 			} else if (stageIndex == stages.size() - 1) {
-				btnNext.setText("結束啦你");
+				System.exit(0);
 			}
-
-
-			if (stageIndex == stages.size() - 1) return;
 			
 			this.remove(stages.get(stageIndex));
 			
 			stageIndex++;
+			if (stageIndex == stages.size() - 1)
+				btnNext.setText("結束啦你");
+
 			progressBar.setValue(stageIndex);
 			
 			this.add(stages.get(stageIndex));
