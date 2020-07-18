@@ -28,7 +28,7 @@ public class AutoDownloadInstall extends JPanel {
 	private String loadingText = "...";
 	
 	private enum states {onReady, downloadMods, removeOldMods, unzipMods, removeModsZip, onFinish};
-	private states currentState = states.onReady;
+	private states currentState = states.onFinish;
 	
 	public AutoDownloadInstall(Screen screen, String modpackURL) {
 		this.setBackground(Constant.secondaryColor);
@@ -105,7 +105,7 @@ public class AutoDownloadInstall extends JPanel {
 		messages.append("完成安裝!\n");
 
 		// play a sound
-		new WavPlayer("ding.wav");
+		new WavPlayer("src/ding.wav");
 
 		timer.stop();
 		screen.setEnableAllBtns(true);
