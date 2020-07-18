@@ -8,11 +8,9 @@ public class WavPlayer {
 
     public WavPlayer(String url) {
         // open the sound file as a Java input stream
-        InputStream in = null;
         AudioStream audioStream = null;
         try {
-            in = new FileInputStream(url);
-            audioStream = new AudioStream(in);
+            audioStream = new AudioStream(getClass().getResourceAsStream(url));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
