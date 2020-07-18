@@ -10,7 +10,7 @@ import mcmi.config.ConfigLoader;
 
 public class Main {
 
-	public static final Version version = new Version("1.4");
+	public static final Version version = new Version("1.5");
 	// "/Users/" + System.getProperty("user.name") + "/Library/Application Support/minecraft";
 	public static String defualtMCLocation = "C:\\Users\\" + System.getProperty("user.name") + "\\AppData\\Roaming\\.minecraft";
 	

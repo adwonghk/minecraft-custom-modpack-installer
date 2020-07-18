@@ -23,7 +23,7 @@ public class AutoUpdater implements Runnable {
 			return;
 		}
 		
-		downloader = new AutoDownloader(this.url, true);	
+		downloader = new AutoDownloader(this.url, true, null);
 		
 		timer = new Timer(100, e -> {
 			if (downloader.success) {

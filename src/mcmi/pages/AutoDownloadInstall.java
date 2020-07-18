@@ -1,19 +1,11 @@
 package mcmi.pages;
 
-import java.awt.Color;
-import java.awt.event.MouseMotionListener;
 import java.io.File;
 import java.io.IOException;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
-import javax.swing.Timer;
+import javax.swing.*;
 
-import com.sun.org.apache.bcel.internal.Const;
+import audio.WavPlayer;
 import components.ModernStyleUI;
 import components.RoundedBorder;
 import mcmi.Constant;
@@ -27,6 +19,7 @@ public class AutoDownloadInstall extends JPanel {
 	
 	private JLabel hint;
 	private JButton btn;
+	private JProgressBar progressBar;
 	private JTextArea console;
 	private StringBuilder messages = new StringBuilder("");
 	
@@ -41,8 +34,14 @@ public class AutoDownloadInstall extends JPanel {
 		this.setBackground(Constant.secondaryColor);
 		this.setSize(Screen.PAGE_WIDTH, Screen.PAGE_HEIGHT);
 		this.setLayout(null);
-		
-		downloader = new AutoDownloader(modpackURL, false);
+
+		progressBar = new JProgressBar();
+		progressBar.setMaximum(100000);
+		progressBar.setStringPainted(true);
+		progressBar.setBounds(120, 40, 290, 20);
+		add(progressBar);
+
+		downloader = new AutoDownloader(modpackURL, false, progressBar);
 		
 		hint = new JLabel("一鍵全自動下載mod pack並安裝 (請先安裝Forge!!!)");
 		hint.setFont(Constant.body);
@@ -61,6 +60,7 @@ public class AutoDownloadInstall extends JPanel {
 		btn.setFocusPainted(false);
 		btn.setForeground(Constant.textColor);
 		btn.addActionListener(e -> {
+			progressBar.setValue(0);
 			btn.setEnabled(false);
 			screen.setEnableAllBtns(false);
 			timer.start();
@@ -92,34 +92,47 @@ public class AutoDownloadInstall extends JPanel {
 			} else if (currentState == states.unzipMods) {
 				unzipMods();
 			} else if (currentState == states.removeModsZip) {
-				System.out.println("[Info] - Start to remove mods.zip\n");
-				File file = new File(Main.defualtMCLocation +  (Main.isWindows() ? "\\" : "/") + "mods.zip");
-				if (file.delete()) {
-					System.out.println("[Info] - Removed mods.zip");
-					messages.append("Deleted mods.zip!\n");
-				} else {
-					System.out.println("[Info] - Failed at removing mods.zip");
-					messages.append("Failed at deleting mods.zip! Please ask Ad to solve this problem...\n");
-				}
-				currentState = states.onFinish;
+				removeModZip();
 			} else if (currentState == states.onFinish) {
-				timer.stop();
-				screen.setEnableAllBtns(true);
-				btn.setEnabled(true);
+				onFinish(screen);
 			}
 			console.setText(messages.toString());
 		});
 		
 	}
 
+	private void onFinish(Screen screen) {
+		messages.append("完成安裝!\n");
+
+		// play a sound
+		new WavPlayer("ding.wav");
+
+		timer.stop();
+		screen.setEnableAllBtns(true);
+		btn.setEnabled(true);
+	}
+
+	private void removeModZip() {
+		System.out.println("[Info] - Start to remove mods.zip\n");
+		File file = new File(Main.defualtMCLocation +  (Main.isWindows() ? "\\" : "/") + "mods.zip");
+		if (file.delete()) {
+			System.out.println("[Info] - Removed mods.zip");
+			messages.append("刪除 mods.zip!\n");
+		} else {
+			System.out.println("[Info] - Failed at removing mods.zip");
+			messages.append("錯誤!無法刪除 mods.zip!請向Ad查詢...\n");
+		}
+		currentState = states.onFinish;
+	}
+
 	private void downloadMods() {
-		messages.replace(0, messages.length(), "Downloading mods" + loadingText);
+		messages.replace(0, messages.length(), "正在下載模組包" + loadingText);
 		loadingText = loadingText.equals("...") ? ".." : loadingText.equals("..") ? "." : "...";
 		
 		if (!downloader.isDownloading) downloader.startDownload();
 		
 		if (downloader.success) {
-			messages.append("\nDownload completed!\n");
+			messages.append("\n下載完成!\n");
 			timer.stop();
 			currentState = states.removeOldMods;
 			timer.start();
@@ -128,7 +141,7 @@ public class AutoDownloadInstall extends JPanel {
 
 	private void removeOldMods() {
 		System.out.println("----------");
-		messages.append("Start to delete old mods...\n");
+		messages.append("開始刪除舊模組...\n");
 		System.out.println("[Info] - Start to removing old mods");
 		
 		File modsFolder = new File(Main.defualtMCLocation +  (Main.isWindows() ? "\\" : "/") +"mods");
@@ -139,12 +152,12 @@ public class AutoDownloadInstall extends JPanel {
 			for(File file: modsFolder.listFiles()) {
 			    if (!file.isDirectory()) {
 			    	numFiles++;
-			    	messages.append("Deleting files: " + file.getName() + "\n");
+			    	messages.append("刪除模組: " + file.getName() + "\n");
 					System.out.println("[Info] - Deleting files: " + file.getName());
 			    	file.delete();
 			    }
 			}
-		    messages.append("Deleted " + numFiles  + " files\n");
+		    messages.append("刪除了 " + numFiles  + " 個蕭模組\n");
 			System.out.println("[Info] - Deleted " + numFiles  + " files");
 			System.out.println("----------");
 		}
@@ -160,15 +173,15 @@ public class AutoDownloadInstall extends JPanel {
 		System.out.println("[Info] - Unzipping " + Main.defualtMCLocation +  (Main.isWindows() ? "\\" : "/") + "mods.zip");
 		
 		try {
-			messages.append("Unzipping " + Main.defualtMCLocation + " mods.zip...");
+			messages.append("正在解壓縮在 " + Main.defualtMCLocation + " 的mods.zip...\n");
 			AutoUnzipper unzipper = new AutoUnzipper(Main.defualtMCLocation +  (Main.isWindows() ? "\\" : "/") + "mods.zip", Main.defualtMCLocation +  (Main.isWindows() ? "\\" : "/") + "mods");
 			String[] filesName = unzipper.filesName.split(" ");
 			for (String n : filesName) {
-				messages.append("Unzipped files: " + n + "\n");
+				messages.append("解壓縮: " + n + "\n");
 			}
 			
-			messages.append("Unzipped successfully!\n");
-			messages.append("Unzipped " + filesName.length + " files!\n");
+			messages.append("成功解壓縮!\n");
+			messages.append("解壓縮了 " + filesName.length + " 個模組!\n");
 			System.out.println("[Info] - Unzipped " + filesName.length + " files!");
 			timer.stop();
 			currentState = states.removeModsZip;

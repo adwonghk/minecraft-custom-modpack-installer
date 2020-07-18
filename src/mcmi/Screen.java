@@ -99,8 +99,9 @@ public class Screen extends JPanel {
 			this.remove(stages.get(stageIndex));
 			
 			stageIndex++;
-			if (stageIndex == stages.size() - 1)
-				btnNext.setText("結束啦你");
+			if (stageIndex == stages.size() - 1) {
+				btnNext.setText("結束");
+			}
 
 			progressBar.setValue(stageIndex);
 			
@@ -114,6 +115,8 @@ public class Screen extends JPanel {
 			this.remove(stages.get(stageIndex));
 			
 			stageIndex--;
+			btnNext.setText("下一頁");
+
 			progressBar.setValue(stageIndex);
 			
 			this.add(stages.get(stageIndex));
